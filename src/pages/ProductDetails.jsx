@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import laptop from "./assets/laptop.jpg";
+//import Navbar from "../components/Navbar";
+import laptop from "../assets/laptop.jpg";
 
 function ProductDetails() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="details-container">
         <Link to="/" className="back-btn">
