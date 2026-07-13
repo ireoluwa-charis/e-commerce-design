@@ -183,3 +183,20 @@ body {
 .details-info button:hover {
   background: #1d4ed8;
 }
+
+@media (max-width: 768px) {
+  .details-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .details-info ul {
+    margin-left: 0;
+    list-style-position: inside;
+  }
+
+  .details-info button {
+    width: 100%;
+  }
+}
