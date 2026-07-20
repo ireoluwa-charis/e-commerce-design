@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-function ProductDetails() {
+function ProductDetails({ addToCart }) {
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
@@ -25,13 +25,17 @@ function ProductDetails() {
   }, [id]);
 
   if (!product) {
-    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+    return (
+      <h2 style={{ textAlign: "center", color: "black" }}>
+        Loading...
+      </h2>
+    );
   }
 
   return (
     <div className="details-container">
       <Link to="/" className="back-btn">
-        ← Back to Products
+         Back to Products
       </Link>
 
       <div className="details-card">
@@ -46,11 +50,13 @@ function ProductDetails() {
 
           <ul>
             <li>Category: {product.category}</li>
-            <li>Rating: {product.rating.rate} ⭐</li>
+            <li>Rating: {product.rating.rate}</li>
             <li>Reviews: {product.rating.count}</li>
           </ul>
 
-          <button>Buy Now</button>
+          <button onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

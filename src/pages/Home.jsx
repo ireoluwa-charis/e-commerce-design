@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
 
-function Home() {
+function Home({ addToCart }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -10,6 +10,7 @@ function Home() {
       try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
+
         setProducts(data);
       } catch (error) {
         console.log(error);
@@ -19,6 +20,17 @@ function Home() {
     fetchProducts();
   }, []);
 
+  if (products.length === 0) {
+    return (
+      <>
+        <Hero />
+        <h2 style={{ textAlign: "center", color: "black" }}>
+          Loading Products...
+        </h2>
+      </>
+    );
+  }
+
   return (
     <>
       <Hero />
@@ -27,10 +39,12 @@ function Home() {
         {products.map((product) => (
           <ProductCard
             key={product.id}
+            product={product}
             id={product.id}
             image={product.image}
             name={product.title}
-            price={`$${product.price}`}
+            price={product.price}
+            addToCart={addToCart}
           />
         ))}
       </section>

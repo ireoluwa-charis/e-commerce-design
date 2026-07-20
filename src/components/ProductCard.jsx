@@ -1,18 +1,27 @@
 import { Link } from "react-router-dom";
 
-function ProductCard({ id, image, name, price }) {
+function ProductCard({
+  product,
+  id,
+  image,
+  name,
+  price,
+  addToCart,
+}) {
   return (
-    <Link to={`/product/${id}`} className="product-link">
-      <div className="card">
+    <div className="card">
+      <Link to={`/product/${id}`} className="product-link">
         <img src={image} alt={name} />
 
         <h3>{name}</h3>
 
-        <p className="price">{price}</p>
+        <p className="price">${price}</p>
+      </Link>
 
-        <button>Buy Now</button>
-      </div>
-    </Link>
+      <button onClick={() => addToCart(product)}>
+        Add to Cart
+      </button>
+    </div>
   );
 }
 
