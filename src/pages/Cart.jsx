@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import PayButton from "../components/PayButton";
 
 function Cart({
   cart,
   increaseQuantity,
   decreaseQuantity,
   removeItem,
+  clearCart,
 }) {
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -16,7 +18,7 @@ function Cart({
       <h1 style={{ color: "#111827" }}>Shopping Cart</h1>
 
       <Link to="/" className="back-btn">
-         Continue Shopping
+        Continue Shopping
       </Link>
 
       {cart.length === 0 ? (
@@ -59,9 +61,14 @@ function Cart({
             </div>
           ))}
 
-          <h2 className="cart-total">
-            Total: ${total.toFixed(2)}
-          </h2>
+          <div className="cart-total">
+            <h2>Total: ${total.toFixed(2)}</h2>
+
+            <PayButton
+              total={total}
+              clearCart={clearCart}
+            />
+          </div>
         </>
       )}
     </div>

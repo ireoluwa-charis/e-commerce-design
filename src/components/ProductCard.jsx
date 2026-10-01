@@ -12,9 +12,7 @@ function ProductCard({
     <div className="card">
       <Link to={`/product/${id}`} className="product-link">
         <img src={image} alt={name} />
-
         <h3>{name}</h3>
-
         <p className="price">${price}</p>
       </Link>
 

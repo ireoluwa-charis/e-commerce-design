@@ -3,35 +3,26 @@ import { Link } from "react-router-dom";
 function Navbar({ cartCount }) {
   return (
     <nav className="navbar">
-      <h1>TechNest</h1>
+      <Link to="/" className="navbar-logo">
+        StoreIzzy
+      </Link>
 
-      <ul>
-        <li>
-          <Link
-            to="/"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            Home
-          </Link>
-        </li>
+      <div className="navbar-links">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
 
-        <li>
-          <Link
-            to="/cart"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            Cart ({cartCount})
-          </Link>
-        </li>
-      </ul>
+        <Link to="/cart" className="cart-link">
+          <span>Cart</span>
+
+          <span className="cart-badge">
+            {cartCount > 99 ? "99+" : cartCount}
+          </span>
+        </Link>
+      </div>
     </nav>
   );
 }
 
 export default Navbar;
+
